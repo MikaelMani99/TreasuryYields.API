@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AngleSharp" Version="0.16.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TreasuryYields.Models\TreasuryYields.Models.csproj" />
+    <ProjectReference Include="..\TreasuryYields.Repositories\TreasuryYields.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>
