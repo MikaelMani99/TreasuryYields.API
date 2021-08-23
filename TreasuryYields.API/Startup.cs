@@ -30,6 +30,7 @@ using TreasuryYields.Repositories.Interfaces;
 using TreasuryYields.Services.Implementations;
 using TreasuryYields.Services.Interfaces;
 using TreasuryYields.API.Mappings;
+using TreasuryYields.API.Middlewares;
 
 namespace TreasuryYields.API
 {
@@ -112,6 +113,8 @@ namespace TreasuryYields.API
 
             app.UseHangfireDashboard();
             app.UseHangfireServer();
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseHttpsRedirection();
 
