@@ -25,5 +25,13 @@ namespace TreasuryYields.API.Controllers
             var model = _tys.GetTreasuryYieldsDayByDate(date, format);
             return Ok(model);
         }
+
+        [HttpGet]
+        [Route("{dateFrom}/to/{dateTo}", Name = "GetTreasuryYieldsByDateRange")]
+        public IActionResult GetTreasuryYieldsByDateRange(String dateFrom, String dateTo, [FromQuery] String format = "dd-MM-yy")
+        {
+            var results = _tys.GetTreasuryYieldsByDateRange(dateFrom, dateTo, format);
+            return Ok(results);
+        }
     }
 }

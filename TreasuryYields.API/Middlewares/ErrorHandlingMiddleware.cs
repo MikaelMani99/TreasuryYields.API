@@ -48,7 +48,7 @@ namespace TreasuryYields.API.Middlewares
             var result = JsonConvert.SerializeObject(new { errors = new { Message = new string[] { message } } });
             // if the server is being run locally / set to in development
             // the stacktrace will follow the error message in the request
-            if (!env.IsDevelopment())
+            if (env.IsDevelopment())
             {
                 result = JsonConvert.SerializeObject(new { errors = new { Message = new string[] { message } }, stacktrace = stackTrace });
             }
