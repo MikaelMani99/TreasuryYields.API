@@ -5,15 +5,18 @@ using System;
 using System.Collections.Generic;
 using TreasuryYields.Models.DTOs;
 using System.Globalization;
+using AutoMapper;
 
 namespace TreasuryYields.Services.Implementations
 {
     public class TreasuryYieldsService : ITreasuryYieldsService
     {
         private readonly ITreasuryYieldsRepository _tyr;
-        public TreasuryYieldsService(ITreasuryYieldsRepository TYR)
+        private readonly IMapper _mapper;
+        public TreasuryYieldsService(ITreasuryYieldsRepository TYR, IMapper mapper)
         {
             _tyr = TYR;
+            _mapper = mapper;
         }
         /// <summary>
         /// Takes in a String that includes a date that can be converted to DateTime using a particular format
@@ -31,21 +34,22 @@ namespace TreasuryYields.Services.Implementations
             return dateFormatted;
         }
 
-        public TreasuryYieldsDay GetTreasuryYieldsDay(Guid ID)
+        public TreasuryYieldsDayDTO GetTreasuryYieldsDay(Guid ID)
         {
-            return _tyr.GetTreasuryYieldsDay(ID);
+            return _mapper.Map<TreasuryYieldsDayDTO>(_tyr.GetTreasuryYieldsDay(ID));
         }
 
-        public TreasuryYieldsDay GetTreasuryYieldsDayByDate(String date, String format)
+        public TreasuryYieldsDayDTO GetTreasuryYieldsDayByDate(String date, String format)
         {
-            return _tyr.GetTreasuryYieldsDayByDate(date, format);
+            var dateformatted = ConvertStringToDate(date, format);
+            return _mapper.Map<TreasuryYieldsDayDTO>(_tyr.GetTreasuryYieldsDayByDate(dateformatted));
         }
 
-        public IEnumerable<TreasuryYieldsDay> GetTreasuryYieldsByDateRange(String dateFrom, String dateTo, String format)
+        public IEnumerable<TreasuryYieldsDayDTO> GetTreasuryYieldsByDateRange(String dateFrom, String dateTo, String format)
         {
             var dateFromFormatted = ConvertStringToDate(dateFrom, format);
             var dateToFormatted = ConvertStringToDate(dateTo, format);
-            return  _tyr.GetTreasuryYieldsByDateRange(dateFromFormatted, dateToFormatted);
+            return  _mapper.Map<IEnumerable<TreasuryYieldsDayDTO>>(_tyr.GetTreasuryYieldsByDateRange(dateFromFormatted, dateToFormatted));
         }
     }
 }

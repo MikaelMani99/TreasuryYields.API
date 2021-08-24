@@ -24,14 +24,9 @@ namespace TreasuryYields.Repositories.Implementations
             return _dbContext.TreasuryYieldsDays.FirstOrDefault(d => d.ID == ID);
         }
 
-        public TreasuryYieldsDay GetTreasuryYieldsDayByDate(String date, String format)
+        public TreasuryYieldsDay GetTreasuryYieldsDayByDate(DateTime date)
         {
-            var dateFormatted = DateTime.ParseExact(
-                date,
-                format,
-                CultureInfo.InvariantCulture
-            );
-            var yieldDay = _dbContext.TreasuryYieldsDays.FirstOrDefault(d => d.Date == dateFormatted);
+            var yieldDay = _dbContext.TreasuryYieldsDays.FirstOrDefault(d => d.Date == date);
             if (yieldDay == null) { throw new NotFoundException("no yield this day!"); }
             return yieldDay;
         }

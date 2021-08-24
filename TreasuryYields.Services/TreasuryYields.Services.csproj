@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.9.1" />
     <ProjectReference Include="..\TreasuryYields.Models\TreasuryYields.Models.csproj" />
     <ProjectReference Include="..\TreasuryYields.Repositories\TreasuryYields.Repositories.csproj" />
