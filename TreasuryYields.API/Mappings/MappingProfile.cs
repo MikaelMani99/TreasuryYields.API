@@ -4,10 +4,11 @@ using TreasuryYields.Models.DTOs;
 
 namespace TreasuryYields.API.Mappings
 {
-    public class MappingProfile: Profile
+    public class MappingProfile : Profile
     {
-        public MappingProfile(){
-            CreateMap<TreasuryYieldsDay,TreasuryYieldsDayDTO>();
+        public MappingProfile()
+        {
+            CreateMap<TreasuryYieldsDay, TreasuryYieldsDayDTO>();
         }
     }
 }

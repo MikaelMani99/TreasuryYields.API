@@ -1,27 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
 using AutoMapper;
 using Hangfire;
 using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using OxyPlot;
-using OxyPlot.Axes;
-using OxyPlot.Series;
+using TreasuryYields.API.Mappings;
 using TreasuryYields.CronJobs;
 using TreasuryYields.Repositories.Contexts.Implementations;
 using TreasuryYields.Repositories.Contexts.Interfaces;
@@ -29,7 +17,6 @@ using TreasuryYields.Repositories.Implementations;
 using TreasuryYields.Repositories.Interfaces;
 using TreasuryYields.Services.Implementations;
 using TreasuryYields.Services.Interfaces;
-using TreasuryYields.API.Mappings;
 
 namespace TreasuryYields.API
 {
@@ -91,7 +78,7 @@ namespace TreasuryYields.API
                                     .AllowAnyMethod();
                               });
         });
-            
+
             // Register service and implementation for the db context
             services.AddScoped<ITreasuryYieldsDbContext>(provider => provider.GetService<TreasuryYieldsDbContext>());
 

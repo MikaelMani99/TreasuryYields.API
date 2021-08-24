@@ -2,7 +2,6 @@ using TreasuryYields.Services.Interfaces;
 using TreasuryYields.Repositories.Interfaces;
 using TreasuryYields.Models.Entities;
 using System;
-using System.Threading.Tasks;
 
 namespace TreasuryYields.Services.Implementations
 {
@@ -18,7 +17,7 @@ namespace TreasuryYields.Services.Implementations
         {
             return _tyr.GetTreasuryYieldsDay(ID);
         }
-        
+
         public TreasuryYieldsDay GetTreasuryYieldsDayByDate(String date, String format)
         {
             return _tyr.GetTreasuryYieldsDayByDate(date, format);

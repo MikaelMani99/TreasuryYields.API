@@ -30,7 +30,7 @@ namespace TreasuryYields.Repositories.Implementations
                 CultureInfo.InvariantCulture
             );
             var yieldDay = _dbContext.TreasuryYieldsDays.FirstOrDefault(d => d.Date == dateFormatted);
-            if(yieldDay == null) { throw new NotFoundException("no yield this day!"); }
+            if (yieldDay == null) { throw new NotFoundException("no yield this day!"); }
             return yieldDay;
         }
     }
