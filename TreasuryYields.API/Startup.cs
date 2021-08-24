@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using TreasuryYields.API.Mappings;
+using TreasuryYields.API.Middlewares;
 using TreasuryYields.CronJobs;
 using TreasuryYields.Repositories.Contexts.Implementations;
 using TreasuryYields.Repositories.Contexts.Interfaces;
@@ -99,6 +100,8 @@ namespace TreasuryYields.API
 
             app.UseHangfireDashboard();
             app.UseHangfireServer();
+
+            app.UseMiddleware(typeof(ErrorHandlingMiddleware));
 
             app.UseHttpsRedirection();
 
