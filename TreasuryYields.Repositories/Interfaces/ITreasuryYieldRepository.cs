@@ -7,7 +7,7 @@ namespace TreasuryYields.Repositories.Interfaces
     public interface ITreasuryYieldsRepository
     {
         TreasuryYieldsDay GetTreasuryYieldsDay(Guid ID);
-        TreasuryYieldsDay GetTreasuryYieldsDayByDate(String date, String format);
+        TreasuryYieldsDay GetTreasuryYieldsDayByDate(DateTime date);
         IEnumerable<TreasuryYieldsDay> GetTreasuryYieldsByDateRange(DateTime dateFrom, DateTime dateTo);
     }
 }
