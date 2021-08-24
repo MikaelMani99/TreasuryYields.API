@@ -5,6 +5,8 @@ using TreasuryYields.Models.Entities;
 using TreasuryYields.Repositories.Contexts.Interfaces;
 using TreasuryYields.Repositories.Interfaces;
 using TreasuryYields.Models.Exceptions;
+using System.Collections.Generic;
+using TreasuryYields.Models.DTOs;
 
 namespace TreasuryYields.Repositories.Implementations
 {
@@ -32,6 +34,12 @@ namespace TreasuryYields.Repositories.Implementations
             var yieldDay = _dbContext.TreasuryYieldsDays.FirstOrDefault(d => d.Date == dateFormatted);
             if (yieldDay == null) { throw new NotFoundException("no yield this day!"); }
             return yieldDay;
+        }
+
+        public IEnumerable<TreasuryYieldsDay> GetTreasuryYieldsByDateRange(DateTime dateFrom, DateTime dateTo)
+        {
+            var values = _dbContext.TreasuryYieldsDays.Where(d => d.Date >= dateFrom && d.Date <= dateTo);
+            return values;
         }
     }
 }
