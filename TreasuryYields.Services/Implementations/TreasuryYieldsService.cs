@@ -16,12 +16,12 @@ namespace TreasuryYields.Services.Implementations
             _tyr = TYR;
         }
         /// <summary>
-        /// 
+        /// Takes in a String that includes a date that can be converted to DateTime using a particular format
         /// </summary>
-        /// <param name="date"></param>
-        /// <param name="format"></param>
-        /// <returns></returns>
-        private DateTime ConvertStringToDate(String date, String format)
+        /// <param name="date">date in a string format</param>
+        /// <param name="format">format in a string format</param>
+        /// <returns>date as a DateTime Struct</returns>
+        private static DateTime ConvertStringToDate(String date, String format)
         {
             var dateFormatted = DateTime.ParseExact(
                 date,
