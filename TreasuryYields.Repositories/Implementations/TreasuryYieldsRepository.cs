@@ -7,6 +7,7 @@ using TreasuryYields.Repositories.Interfaces;
 using TreasuryYields.Models.Exceptions;
 using System.Collections.Generic;
 using TreasuryYields.Models.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace TreasuryYields.Repositories.Implementations
 {
@@ -26,7 +27,9 @@ namespace TreasuryYields.Repositories.Implementations
 
         public TreasuryYieldsDay GetTreasuryYieldsDayByDate(DateTime date)
         {
-            var yieldDay = _dbContext.TreasuryYieldsDays.FirstOrDefault(d => d.Date == date);
+            var yieldDay = _dbContext.TreasuryYieldsDays
+                                        .Include(d => d.Treasury)
+                                        .FirstOrDefault(d => d.Date == date);
             if (yieldDay == null) { throw new NotFoundException("no yield this day!"); }
             return yieldDay;
         }

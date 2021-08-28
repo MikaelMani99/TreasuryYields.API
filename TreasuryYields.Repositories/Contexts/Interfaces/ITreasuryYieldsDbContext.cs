@@ -7,6 +7,7 @@ namespace TreasuryYields.Repositories.Contexts.Interfaces
     public interface ITreasuryYieldsDbContext
     {
         DbSet<TreasuryYieldsDay> TreasuryYieldsDays { get; set; }
+        DbSet<Treasury> Treasuries { get; set; }
         int SaveChanges();
         Task<int> SaveChangesAsync();
     }
