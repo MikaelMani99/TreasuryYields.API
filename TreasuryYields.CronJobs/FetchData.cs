@@ -58,9 +58,11 @@ namespace TreasuryYields.CronJobs
         /// <returns>TreasuryYieldsDay Entity</returns>
         private TreasuryYieldsDay GetDayFromRow(AngleSharp.Dom.IElement row)
         {
+            var treasury = _dbContext.Treasuries.FirstOrDefault(x => x.Country == "United States of America");
             return new()
             {
                 ID = Guid.NewGuid(),
+                Treasury = treasury,
                 Date = ConvertToDate(row.Children[0]),
                 OneMonths = ConvertToDouble(row.Children[1]),
                 TwoMonths = ConvertToDouble(row.Children[2]),

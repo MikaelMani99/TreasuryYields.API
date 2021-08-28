@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TreasuryYields.Repositories.Contexts.Implementations;
@@ -9,9 +10,10 @@ using TreasuryYields.Repositories.Contexts.Implementations;
 namespace TreasuryYields.API.Migrations
 {
     [DbContext(typeof(TreasuryYieldsDbContext))]
-    partial class TreasuryYieldsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210828112505_AddedTreasuryAndRelationship")]
+    partial class AddedTreasuryAndRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

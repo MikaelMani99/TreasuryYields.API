@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using TreasuryYields.Models.Entities;
@@ -15,9 +16,26 @@ namespace TreasuryYields.Repositories.Contexts.Implementations
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // TODO add relationships
+            // Mapping relations
+            modelBuilder.Entity<TreasuryYieldsDay>()
+                                .HasOne(t => t.Treasury)
+                                .WithMany(d => d.TreasuryYieldsDays);
+
+
+            // Seeding Data
+            modelBuilder.Entity<Treasury>().HasData(
+              new Treasury{
+                  ID = Guid.NewGuid(), 
+                  Country = "United States of America", 
+                  Agency = "U.S. Department of the Treasury", 
+                  Seal = new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Seal_of_the_United_States_Department_of_the_Treasury.svg/1024px-Seal_of_the_United_States_Department_of_the_Treasury.svg.png"), 
+                  Alpha2Code = "US", 
+                  Alpha3Code = "USA"}
+            );
+
         }
 
+        public DbSet<Treasury> Treasuries { get; set; }
         public DbSet<TreasuryYieldsDay> TreasuryYieldsDays { get; set; }
         public Task<int> SaveChangesAsync() => base.SaveChangesAsync();
     }

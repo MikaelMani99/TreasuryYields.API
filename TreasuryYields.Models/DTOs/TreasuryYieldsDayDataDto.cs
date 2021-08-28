@@ -1,13 +1,7 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace TreasuryYields.Models.Entities
+namespace TreasuryYields.Models.DTOs
 {
-    public record TreasuryYieldsDay
+    public record TreasuryYieldsDayDataDto
     {
-        [Key]
-        public Guid ID { get; init; }
-        public DateTime Date { get; init; }
         public double? OneMonths { get; init; }
         public double? TwoMonths { get; init; }
         public double? ThreeMonths { get; init; }
@@ -20,8 +14,5 @@ namespace TreasuryYields.Models.Entities
         public double? TenYears { get; init; }
         public double? TwentyYears { get; init; }
         public double? ThirtyYears { get; init; }
-
-        // navigation properties
-        public Treasury Treasury { get; init; }
     }
 }
