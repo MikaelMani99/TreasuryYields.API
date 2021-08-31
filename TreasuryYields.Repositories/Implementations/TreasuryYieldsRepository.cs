@@ -36,7 +36,9 @@ namespace TreasuryYields.Repositories.Implementations
 
         public IEnumerable<TreasuryYieldsDay> GetTreasuryYieldsByDateRange(DateTime dateFrom, DateTime dateTo)
         {
-            var values = _dbContext.TreasuryYieldsDays.Where(d => d.Date >= dateFrom && d.Date <= dateTo);
+            var values = _dbContext.TreasuryYieldsDays
+                                        .Include(d => d.Treasury)
+                                        .Where(d => d.Date >= dateFrom && d.Date <= dateTo);
             return values;
         }
     }
